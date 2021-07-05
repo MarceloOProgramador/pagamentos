@@ -1,0 +1,22 @@
+{
+    "name": "root/desafio-picpay",
+    "description": "Desafio seletivo piclover",
+    "type": "project",
+    "require": {
+        "phpunit/phpunit": "9.5.x-dev",
+        "mcl/mcldb": "dev-master"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Root\\DesafioPicpay\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Marcelo Pereira",
+            "email": "marcelooprogramador@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
