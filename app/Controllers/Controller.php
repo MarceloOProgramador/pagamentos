@@ -2,25 +2,13 @@
 
 namespace App\Controllers;
 
-class Controller{
+abstract class Controller{
 
-    public function index()
-    {
+    abstract public function index();
 
-    }
+    abstract function store(array $datas);
 
-    public function store(array $datas)
-    {
+    abstract function update(array $datas, int $id);
 
-    }
-
-    public function update(array $datas, int $id)
-    {
-
-    }
-
-    public function delete(int $id)
-    {
-
-    }
+    abstract function delete(int $id);
 }

@@ -81,12 +81,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MarceloOProgramador/mcldb.git",
-                "reference": "be8c062854428e4a3e7b0334a7c2b9f60ea5534f"
+                "reference": "225fe6cbe40c7a2ca553befea630c95b5d6ecf55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MarceloOProgramador/mcldb/zipball/be8c062854428e4a3e7b0334a7c2b9f60ea5534f",
-                "reference": "be8c062854428e4a3e7b0334a7c2b9f60ea5534f",
+                "url": "https://api.github.com/repos/MarceloOProgramador/mcldb/zipball/225fe6cbe40c7a2ca553befea630c95b5d6ecf55",
+                "reference": "225fe6cbe40c7a2ca553befea630c95b5d6ecf55",
                 "shasum": ""
             },
             "require": {
@@ -117,7 +117,7 @@
                 "issues": "https://github.com/MarceloOProgramador/mcldb/issues",
                 "source": "https://github.com/MarceloOProgramador/mcldb/tree/master"
             },
-            "time": "2020-07-10T12:47:34+00:00"
+            "time": "2021-07-05T22:55:34+00:00"
         },
         {
             "name": "myclabs/deep-copy",
