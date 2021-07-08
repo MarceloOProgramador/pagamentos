@@ -11,6 +11,8 @@ use Mcldb\Classes\Update;
 class Model {
 
     protected string $table;
+    protected int $id;
+    public array $datas;
 
     public function __construct(string $table)
     {
@@ -31,13 +33,13 @@ class Model {
         }
     }
 
-    public function update(array $datas, int $id): bool
+    public function update(array $datas): bool
     {
         try
         {
             $update = new Update();
 
-            $update->toUpdate($this->table, $datas)->where("id", "=", "{$id}");
+            $update->toUpdate($this->table, $datas)->where("id", "=", "{$this->id}");
             $update->exec();
             
             return true;
@@ -61,17 +63,19 @@ class Model {
         }
     }
 
-    public function find($id) : array
+    public function find($id) : Model
     { 
         $read = new Read();
-        $datas = $read->toRead($this->table)->fetch()[0];
-        return $datas;
+        $this->id = $id;
+        $read->toRead($this->table)->where("id", "=", "{$this->id}");
+        $this->datas = $read->fetch();
+        return $this;
     }
 
-    public function all() : array
+    public function all() : Model
     {
         $read = new Read();
-        $datas = $read->toRead($this->table)->fetch();
-        return $datas;
+        $this->datas = $read->toRead($this->table)->fetch();
+        return $this;
     }
 }

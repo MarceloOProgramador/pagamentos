@@ -16,9 +16,10 @@ class UserController implements Controller{
     public function show(int $id)
     {
         $user = new User("usuarios");
-        $user_datas = $user->find($id);
+        $user->find($id);
+        $user->carteira();
 
-        return json_encode(["user" => $user_datas]);
+        return json_encode(["user" => $user->datas]);
     }
 
     public function store(array $datas)
@@ -36,7 +37,7 @@ class UserController implements Controller{
     {
         $updated = FALSE;
         $user = new User("usuarios");
-        $updated = $user->update($datas, $id);
+        $updated = $user->update($datas);
 
         if($updated)
             return json_encode(["success", "Usuario atualizado com sucesso!"]);

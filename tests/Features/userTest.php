@@ -40,4 +40,11 @@ class UserTest extends TestCase {
         $userController = new UserController();
         $this->assertTrue($userController->delete(15));
     }
+
+    // public function testShow()
+    // {
+    //     $userController = new UserController();
+    //     var_dump($userController->show(16));
+    //     die;
+    // }
 }
