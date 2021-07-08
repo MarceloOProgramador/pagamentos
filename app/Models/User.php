@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Monolog\Logger;
 use Mcldb\Classes\Read;
 
 class User extends Model{

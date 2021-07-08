@@ -29,16 +29,18 @@ class UserTest extends TestCase {
         $userController = new UserController();
 
         $user = [
-            "senha"      => "741589",
+            "nome" => "Marcelo Updated",
+            "email" => "marcelopereira@gmail.com",
+            "senha" => "258963"
         ];
         
-        $this->assertJson($userController->update(10, $user));
+        $this->assertJson($userController->update(16, $user));
     }
 
     public function testDelete()
     {
         $userController = new UserController();
-        $this->assertTrue($userController->delete(15));
+        $this->assertEquals($userController->delete(16), json_encode(["success", "Usuario deletado com sucesso!"]));
     }
 
     // public function testShow()

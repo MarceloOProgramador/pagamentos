@@ -50,11 +50,11 @@ class Model {
         }
     }
 
-    public function delete($id)
+    public function delete()
     {
         try{
             $delete = new Delete();
-            $delete->toDelete($this->table)->where("id", "=", "{$id}");
+            $delete->toDelete($this->table)->where("id", "=", "{$this->id}");
             $delete->exec();
             return true;
         }catch(PDOException $e){

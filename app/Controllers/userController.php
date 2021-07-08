@@ -37,6 +37,7 @@ class UserController implements Controller{
     {
         $updated = FALSE;
         $user = new User("usuarios");
+        $user->find($id);
         $updated = $user->update($datas);
 
         if($updated)
@@ -50,7 +51,7 @@ class UserController implements Controller{
         $deleted = FALSE;
         $user = new User("usuarios");
         
-        $deleted = $user->delete($id);
+        $deleted = $user->find($id)->delete();
 
         if($deleted)
             return json_encode(["success", "Usuario deletado com sucesso!"]);
