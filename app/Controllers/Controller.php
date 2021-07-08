@@ -8,7 +8,7 @@ abstract class Controller{
 
     abstract function store(array $datas);
 
-    abstract function update(array $datas, int $id);
+    abstract function update(int $id, array $datas);
 
     abstract function delete(int $id);
 }

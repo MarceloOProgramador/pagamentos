@@ -6,12 +6,6 @@ use App\Controllers\Controller;
 use App\Models\User;
 
 class UserController extends Controller{
-    private $user;
-
-    public function UserController ()
-    {
-        $this->setUser(new User());
-    }
 
     public function index()
     {
@@ -21,7 +15,8 @@ class UserController extends Controller{
     public function store(array $datas)
     {
         $stored = FALSE;
-        $stored = $this->getUser()->save($datas);
+        $user = new User("usuarios");
+        $stored = $user->save($datas);
 
         if($stored)
             return json_encode(["success", "Usuario criado com sucesso!"]);
@@ -29,23 +24,20 @@ class UserController extends Controller{
             return json_encode(["error", "Usuario não criado com sucesso!"]);
     }
 
-    public function update(array $datas, int $id)
+    public function update(int $id, array $datas)
     {
+        $updated = FALSE;
+        $user = new User("usuarios");
+        $updated = $user->update($datas, $id);
 
+        if($updated)
+            return json_encode(["success", "Usuario atualizado com sucesso!"]);
+        else
+            return json_encode(["error", "Usuario não atualizado com sucesso!"]);
     }
 
     public function delete(int $id)
     {
 
-    }
-
-    public function setUser(User $user) : void
-    {
-        $this->user = $user;
-    }
-
-    public function getUser() : User
-    {
-        return $this->user;
     }
 }

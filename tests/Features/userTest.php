@@ -2,15 +2,36 @@
 
 namespace Test\Features;
 
+use App\Controllers\UserController;
+use App\Models\User;
 use PHPUnit\Framework\TestCase;
-use Mcldb\Classes\Connection;
+use Mcldb\Classes\Create;
 
-class ConnectTest extends TestCase {
+class UserTest extends TestCase {
     
-    public function testConnect()
+    public function testCreate()
     {
-        $connect = new Connection("mysql", "root", "root", "CRUD");
+        $userController = new UserController();
+
+        $user = [
+            "nome"      => "Marcelo Pereira",
+            "senha"      => "123456",
+            "email"     => "marcelooprogramador@gmail.com",
+            "documento"  => "44487780877",
+            "tipo"      => "comum"
+        ];
+
+        $this->assertJson($userController->store($user));
+    }
+
+    public function testUpdate()
+    {
+        $userController = new UserController();
+
+        $user = [
+            "senha"      => "741589",
+        ];
         
-        return $this->assertIsObject($connect->getInstance());
+        $this->assertJson($userController->update(10, $user));
     }
 }
