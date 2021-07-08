@@ -2,14 +2,23 @@
 
 namespace App\Controllers;
 
-use App\Controllers\Controller;
 use App\Models\User;
 
-class UserController extends Controller{
+class UserController implements Controller{
 
     public function index()
     {
+        $user = new User("usuarios");
+        $users = $user->all();
+        return json_encode(["users" => $users]);
+    }
 
+    public function show(int $id)
+    {
+        $user = new User("usuarios");
+        $user_datas = $user->find($id);
+
+        return json_encode(["user" => $user_datas]);
     }
 
     public function store(array $datas)
@@ -17,7 +26,6 @@ class UserController extends Controller{
         $stored = FALSE;
         $user = new User("usuarios");
         $stored = $user->save($datas);
-
         if($stored)
             return json_encode(["success", "Usuario criado com sucesso!"]);
         else
@@ -38,6 +46,14 @@ class UserController extends Controller{
 
     public function delete(int $id)
     {
+        $deleted = FALSE;
+        $user = new User("usuarios");
+        
+        $deleted = $user->delete($id);
 
+        if($deleted)
+            return json_encode(["success", "Usuario deletado com sucesso!"]);
+        else
+            return json_encode(["error", "Usuario não deletado com sucesso!"]);
     }
 }

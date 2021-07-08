@@ -14,14 +14,14 @@ class UserTest extends TestCase {
         $userController = new UserController();
 
         $user = [
-            "nome"      => "Marcelo Pereira",
-            "senha"      => "123456",
-            "email"     => "marcelooprogramador@gmail.com",
-            "documento"  => "44487780877",
-            "tipo"      => "comum"
+            "nome"      => "Andressa Alves",
+            "senha"      => "147258",
+            "email"     => "andressaalvesantos@gmail.com",
+            "documento"  => "41064856657",
+            "tipo"      => "lojista"
         ];
 
-        $this->assertJson($userController->store($user));
+        $this->assertEquals(json_encode(["success", "Usuario criado com sucesso!"]), $userController->store($user));
     }
 
     public function testUpdate()
@@ -33,5 +33,11 @@ class UserTest extends TestCase {
         ];
         
         $this->assertJson($userController->update(10, $user));
+    }
+
+    public function testDelete()
+    {
+        $userController = new UserController();
+        $this->assertTrue($userController->delete(15));
     }
 }

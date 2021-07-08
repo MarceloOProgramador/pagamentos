@@ -2,13 +2,15 @@
 
 namespace App\Controllers;
 
-abstract class Controller{
+interface Controller{
 
-    abstract public function index();
+    public function index();
 
-    abstract function store(array $datas);
+    public function show(int $id);
 
-    abstract function update(int $id, array $datas);
+    public function store(array $datas);
 
-    abstract function delete(int $id);
+    public function update(int $id, array $datas);
+
+    public function delete(int $id);
 }
