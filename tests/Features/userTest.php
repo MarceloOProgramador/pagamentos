@@ -3,9 +3,7 @@
 namespace Test\Features;
 
 use App\Controllers\UserController;
-use App\Models\User;
 use PHPUnit\Framework\TestCase;
-use Mcldb\Classes\Create;
 
 class UserTest extends TestCase {
     
@@ -15,9 +13,9 @@ class UserTest extends TestCase {
 
         $user = [
             "nome"      => "Andressa Alves",
-            "senha"      => "147258",
-            "email"     => "andressaalvesantos@gmail.com",
-            "documento"  => "41064856657",
+            "senha"      => "1452587",
+            "email"     => "andressaalves@gmail.com",
+            "documento"  => "14785236547",
             "tipo"      => "lojista"
         ];
 

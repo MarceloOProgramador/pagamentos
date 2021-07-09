@@ -13,6 +13,7 @@ class Model {
     protected string $table;
     protected int $id;
     public array $datas;
+    public string $last_insert;
 
     public function __construct(string $table)
     {
@@ -25,7 +26,9 @@ class Model {
         {
             $create = new Create();
             $create->toCreate($this->table, $datas);
-            return $create->exec();
+            $create->exec();
+            $this->last_insert = $create->getInstance()->lastInsertId();
+            return true;
         }catch(PDOException $e)
         {
             echo "Error: " . $e->getMessage();

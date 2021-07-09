@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Carteira;
 use App\Models\User;
 
 class UserController implements Controller{
@@ -26,9 +27,18 @@ class UserController implements Controller{
     {
         $stored = FALSE;
         $user = new User("usuarios");
+        $wallet = new Carteira("carteiras");
         $stored = $user->save($datas);
-        if($stored)
+        
+        if($stored){
+            $wallet_stored = false;
+            $wallet_stored = $wallet->save(["usuario_id" => $user->last_insert]);
+
+            if(!$wallet_stored)
+                return json_encode(["error", "Carteira do usuario nao foi criada"]);
+
             return json_encode(["success", "Usuario criado com sucesso!"]);
+        }          
         else
             return json_encode(["error", "Usuario não criado com sucesso!"]);
     }
