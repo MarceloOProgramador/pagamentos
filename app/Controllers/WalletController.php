@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Carteira;
 
-class CarteiraController implements Controller{
+class WalletController implements Controller{
 
     public function index(){
         $wallet = new Carteira("carteiras");

@@ -41,10 +41,4 @@ class UserTest extends TestCase {
         $this->assertEquals($userController->delete(16), json_encode(["success", "Usuario deletado com sucesso!"]));
     }
 
-    // public function testShow()
-    // {
-    //     $userController = new UserController();
-    //     var_dump($userController->show(16));
-    //     die;
-    // }
 }

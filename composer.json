@@ -5,7 +5,8 @@
     "require": {
         "monolog/monolog": "2.x-dev",
         "mcl/mcldb": "master",
-        "vlucas/phpdotenv": "5.3.x-dev"
+        "vlucas/phpdotenv": "5.3.x-dev",
+        "coffeecode/router": "dev-master"
     },
     "license": "MIT",
     "autoload": {

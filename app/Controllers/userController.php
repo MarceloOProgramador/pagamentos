@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Models\Carteira;
 use App\Models\User;
 
+header('Content-Type: application/json; charset: utf-8');
+
 class UserController implements Controller{
 
     public function index()
@@ -67,5 +69,10 @@ class UserController implements Controller{
             return json_encode(["success", "Usuario deletado com sucesso!"]);
         else
             return json_encode(["error", "Usuario não deletado com sucesso!"]);
+    }
+
+    public function sendTo()
+    {
+        
     }
 }
