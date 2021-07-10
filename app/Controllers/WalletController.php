@@ -5,24 +5,40 @@ namespace App\Controllers;
 use App\Models\Carteira;
 
 class WalletController implements Controller{
-
-    public function index(){
+    /**
+     * This method list all datas
+     * @return void
+     */
+    public function index() : void
+    {
         $wallet = new Carteira("carteiras");
         $wallets = $wallet->all();
-        return json_encode($wallets);
+        echo json_encode($wallets);
     }
 
-    public function show (int $id)
+    /**
+     * This method search a specific entity
+     * @var int $id
+     * @return void
+     */
+    public function show (int $id) : void
     {
         $wallet = new Carteira("carteiras");
         $wallet_datas = $wallet->find($id);
+
         if(!empty($wallet_datas))
-            return json_encode(["error", "Carteira nao encontrada!"]);
+        {
+            http_response_code(404);
+            echo json_encode(["error" => "Carteira nao encontrada!"]);
+        }
         else
-            return json_encode($wallet_datas);
-            
+            echo json_encode($wallet_datas);
     }
 
+    /**
+     * This method persist datas in db
+     * @var array $datas
+     */
     public function store(array $datas)
     {
         $wallet = new Carteira("carteiras");
@@ -30,12 +46,23 @@ class WalletController implements Controller{
         $stored = $wallet->save($datas);
 
         if($stored)
-            return json_encode(["success", "Carteira registrada com sucesso!"]);
+            echo json_encode(["success" => "Carteira registrada com sucesso!"]);
         else
-            return json_encode(["error", "Carteira não registra com sucesso!"]);
+        {
+            http_response_code(500);
+            echo json_encode(["error" => "Carteira nao registra com sucesso!"]);
+        }
     }
 
-    public function update(int $id, array $datas)
+    /**
+     * This method updata a specific wallet's datas in database
+     * 
+     * @var int $id
+     * @var array $datas
+     * 
+     * @return void
+     */
+    public function update(int $id, array $datas) : void
     {
         $wallet = new Carteira("carteiras");
         $updated = false;
@@ -43,20 +70,32 @@ class WalletController implements Controller{
         $updated = $wallet->update($datas);
 
         if($updated)
-            return json_encode(["success", "Carteira atualizada com sucesso!"]);
-        else
-            return json_encode(["error", "Carteira nao atualiza com successo!"]);
+            echo json_encode(["success", "Carteira atualizada com sucesso!"]);
+        else{
+            http_response_code(500);
+            echo json_encode(["error", "Carteira nao atualiza com successo!"]);
+        }
     }
 
-    public function delete(int $id)
+    /**
+     * This method delete a specific entity in database
+     * 
+     * @var int $id
+     * 
+     * @return void
+     */
+    public function delete(int $id) : void
     {
         $wallet = new Carteira("carteiras");
         $deleted = false;
         $deleted = $wallet->find($id)->delete();
         
         if($deleted)
-            return json_encode(["success", "Carteira deletada com sucesso!"]);
-        else
-            return json_encode(["error", "Carteira nao deletada com sucesso!"]);
+            echo json_encode(["success", "Carteira deletada com sucesso!"]);
+        else{
+            http_response_code(500);
+            echo json_encode(["error", "Carteira nao deletada com sucesso!"]);
+        }
+            
     }
 }
