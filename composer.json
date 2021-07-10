@@ -6,7 +6,8 @@
         "monolog/monolog": "2.x-dev",
         "mcl/mcldb": "master",
         "vlucas/phpdotenv": "5.3.x-dev",
-        "coffeecode/router": "dev-master"
+        "coffeecode/router": "dev-master",
+        "phpmailer/phpmailer": "dev-master"
     },
     "license": "MIT",
     "autoload": {

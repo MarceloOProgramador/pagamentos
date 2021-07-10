@@ -7,6 +7,9 @@ use Mcldb\Classes\Create;
 use Mcldb\Classes\Delete;
 use Mcldb\Classes\Read;
 use Mcldb\Classes\Update;
+use PHPUnit\Framework\Constraint\IsNull;
+
+use function PHPUnit\Framework\isNull;
 
 class Model {
 
@@ -31,7 +34,7 @@ class Model {
             return true;
         }catch(PDOException $e)
         {
-            echo "Error: " . $e->getMessage();
+            throw new PDOException($e->getMessage(), $e->getCode());
             return false;
         }
     }
@@ -42,13 +45,13 @@ class Model {
         {
             $update = new Update();
 
-            $update->toUpdate($this->table, $datas)->where("id", "=", "{$this->id}");
+            $update->toUpdate($this->table, $datas)->where("id", "=", "{$datas["id"]}");
             $update->exec();
             
             return true;
         }catch(PDOException $e)
         {
-            echo "Error: " . $e->getMessage();
+            throw new PDOException($e->getMessage(), $e->getCode());;
             return false;
         }
     }
@@ -61,17 +64,20 @@ class Model {
             $delete->exec();
             return true;
         }catch(PDOException $e){
-            echo "Error: " . $e->getMessage();
+            throw new PDOException($e->getMessage(), $e->getCode());
             return false;
         }
     }
 
-    public function find($id) : Model
+    public function find(int $id) : Model
     { 
         $read = new Read();
         $this->id = $id;
-        $read->toRead($this->table)->where("id", "=", "{$this->id}");
-        $this->datas = $read->fetch();
+        $read->toRead($this->table)->where("id", "=", "{$id}");
+        if(!empty($read->fetch()))
+        {
+            $this->datas = $read->fetch()[0];
+        }
         return $this;
     }
 

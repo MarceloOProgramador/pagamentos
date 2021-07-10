@@ -41,4 +41,10 @@ class UserTest extends TestCase {
         $this->assertEquals($userController->delete(16), json_encode(["success", "Usuario deletado com sucesso!"]));
     }
 
+    public function testPix()
+    {
+        $userController = new UserController();
+
+        return $this->assertEquals($userController->sendTo(26, 100, 27), json_encode(["message" => "Success"]));
+    }
 }

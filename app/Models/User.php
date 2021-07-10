@@ -10,7 +10,8 @@ class User extends Model{
     {
         $read = new Read();
         $read->toRead("carteiras")->where("usuario_id", "=", "{$this->id}");
-        $this->datas["carteira"] = $read->fetch();
+        if(!empty($read->fetch()))
+            $this->datas["carteira"] = $read->fetch()[0];
         return $this;
     }
 }
