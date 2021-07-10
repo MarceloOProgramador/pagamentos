@@ -7,6 +7,14 @@ use PDOException;
 
 class Carteira extends Model
 {
+    /**
+     * This method save transaction in database
+     * 
+     * @var array $payer_wallet
+     * @var array $payee_wallet
+     * 
+     * @return bool
+     */
     public function toTransfer(array $payer_wallet, array $payee_wallet) : bool
     {
         try{
