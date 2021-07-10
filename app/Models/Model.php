@@ -7,9 +7,6 @@ use Mcldb\Classes\Create;
 use Mcldb\Classes\Delete;
 use Mcldb\Classes\Read;
 use Mcldb\Classes\Update;
-use PHPUnit\Framework\Constraint\IsNull;
-
-use function PHPUnit\Framework\isNull;
 
 class Model {
 
@@ -23,6 +20,11 @@ class Model {
         $this->table = $table;
     }
 
+    /**
+     * This method insert datas in db
+     * @var array $datas
+     * @return bool 
+     **/    
     public function save(array $datas) : bool
     {
         try
@@ -39,6 +41,11 @@ class Model {
         }
     }
 
+    /**
+     * This method update a specific entity in db
+     * @var array $datas
+     * @return bool
+     */
     public function update(array $datas): bool
     {
         try
@@ -56,7 +63,11 @@ class Model {
         }
     }
 
-    public function delete()
+    /**
+     * This method delete a specific entity in db
+     * @return bool 
+     */
+    public function delete() : bool
     {
         try{
             $delete = new Delete();
@@ -69,6 +80,11 @@ class Model {
         }
     }
 
+    /**
+     * This method search for a entity in db
+     * @var int $id
+     * @return Model
+     */
     public function find(int $id) : Model
     { 
         $read = new Read();
@@ -81,6 +97,10 @@ class Model {
         return $this;
     }
 
+    /**
+     * This method get all entities
+     * @return Model
+     */
     public function all() : Model
     {
         $read = new Read();
