@@ -34,9 +34,9 @@ class UserController implements Controller{
     /**
      * Store save the user datas in db
      * @var array $datas
-     * @return array
+     * @return void
      */
-    public function store(array $datas)
+    public function store(array $datas) : void
     {
         $stored = FALSE;
         $user = new User("usuarios");

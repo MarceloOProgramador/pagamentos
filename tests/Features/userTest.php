@@ -12,14 +12,17 @@ class UserTest extends TestCase {
         $userController = new UserController();
 
         $user = [
-            "nome"      => "Andressa Alves",
-            "senha"      => "1452587",
-            "email"     => "andressaalves@gmail.com",
-            "documento"  => "14785236547",
-            "tipo"      => "lojista"
+            "nome"      => "Luiz Felipe",
+            "senha"      => "147852",
+            "email"     => "luuiz.fee@gmail.com",
+            "documento"  => "14735236557",
+            "tipo"      => "comum"
         ];
+        $url = "http://www.localhost/desafio-picpay/transaction";
 
-        $this->assertEquals(json_encode(["success", "Usuario criado com sucesso!"]), $userController->store($user));
+        $response = file_get_contents($url);
+        $s = json_decode($response);
+        //$this->assertFileEquals();
     }
 
     public function testUpdate()
@@ -32,7 +35,7 @@ class UserTest extends TestCase {
             "senha" => "258963"
         ];
         
-        $this->assertJson($userController->update(16, $user));
+        //$this->assertJson($userController->update(16, $user));
     }
 
     public function testDelete()
