@@ -1,5 +1,5 @@
 /vendor/
 \.vscode/
-\.env
+.env
 /tests/Features/*
 /tests/Unit/*
