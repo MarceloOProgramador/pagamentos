@@ -21,7 +21,7 @@ class Model {
     }
 
     /**
-     * This method insert datas in db
+     * This method insert datas in database
      * @var array $datas
      * @return bool 
      **/    
@@ -42,7 +42,7 @@ class Model {
     }
 
     /**
-     * This method update a specific entity in db
+     * This method update a specific entity in database
      * @var array $datas
      * @return bool
      */
@@ -64,7 +64,7 @@ class Model {
     }
 
     /**
-     * This method delete a specific entity in db
+     * This method delete a specific entity in database
      * @return bool 
      */
     public function delete() : bool
@@ -81,7 +81,7 @@ class Model {
     }
 
     /**
-     * This method search for a entity in db
+     * This method search for a entity in database
      * @var int $id
      * @return Model
      */
@@ -98,7 +98,7 @@ class Model {
     }
 
     /**
-     * This method get all entities
+     * This method get all entities of a specific table
      * @return Model
      */
     public function all() : Model
